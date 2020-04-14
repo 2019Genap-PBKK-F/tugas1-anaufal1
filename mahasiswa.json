@@ -1,0 +1,24 @@
+{
+    "mahasiswa": [
+        {
+            "id" : 1,
+            "nrp": "05111740000076",
+            "nama": "Paksi Ario P",
+            "angkatan": "2017",
+            "jk": "Laki-laki",
+            "lahir": "08-04-1998",
+            "foto": " ",
+            "aktif": true
+        },
+        {
+            "id" : 2,
+            "nrp": "05111740000069",
+            "nama": "Kabur",
+            "angkatan": "2017",
+            "jk": "Laki-laki",
+            "lahir": "08-04-1998",
+            "foto": " ",
+            "aktif": true
+        }
+    ]
+} 
