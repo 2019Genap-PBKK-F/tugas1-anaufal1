@@ -1,0 +1,36 @@
+
+{
+  "mahasiswa": [
+    {
+      "id": 1,
+      "nrp": "05111740000138",
+      "nama": "Ahmad Naufal H",
+      "angkatan": "2017",
+      "jeniskelamin": "Laki-Laki",
+      "tgllahir": "2000-03-20",
+      "photo": "",
+      "aktif": true
+    },
+    {
+      "id": 2,
+      "nrp": "051117400000001",
+      "nama": "A",
+      "angkatan": "2017"
+    },
+    {
+      "id": 3,
+      "nrp": "051117400000002",
+      "nama": "B",
+      "angkatan": "2017"
+    },
+    {
+      "id": 4
+    },
+    {
+      "id": 5
+    },
+    {
+      "id": 6
+    }
+  ]
+}

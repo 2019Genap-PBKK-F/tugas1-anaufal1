@@ -7,7 +7,7 @@
       <form @submit.prevent="checkCreds">
         <div class="input-group">
           <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
-          <input class="form-control" name="username" placeholder="Username" type="text" v-model="username">
+          <input class="form-control" name="email" placeholder="email" type="text" v-model="email">
         </div>
 
         <div class="input-group">
@@ -32,14 +32,14 @@ export default {
     return {
       section: 'Login',
       loading: '',
-      username: '',
+      email: '',
       password: '',
       response: ''
     }
   },
   methods: {
     checkCreds() {
-      const { username, password } = this
+      const { email, password } = this
 
       this.toggleLoading()
       this.resetResponse()
@@ -47,18 +47,19 @@ export default {
 
       /* Making API call to authenticate a user */
       api
-        .request('post', '/login', { username, password })
+        .request('get', 'http://10.199.14.46:8009/auth/login/' + email, {auth: { email, password }})
         .then(response => {
           this.toggleLoading()
 
-          var data = response.data
+          var data = response.data[0]
           /* Checking if error object was returned from the server */
           if (data.error) {
+            console(data.error)
             var errorName = data.error.name
             if (errorName) {
               this.response =
                 errorName === 'InvalidCredentialsError'
-                  ? 'Username/Password incorrect. Please try again.'
+                  ? 'email/Password incorrect. Please try again.'
                   : errorName
             } else {
               this.response = data.error
@@ -68,14 +69,17 @@ export default {
           }
 
           /* Setting user in the state and caching record to the localStorage */
-          if (data.user) {
+          if (data.nama) {
             var token = 'Bearer ' + data.token
+            console.log('Nama = ' + data.nama)
+            console.log('Token = ' + data.token)
 
-            this.$store.commit('SET_USER', data.user)
+            this.$store.commit('SET_USER', data.nama)
             this.$store.commit('SET_TOKEN', token)
 
             if (window.localStorage) {
-              window.localStorage.setItem('user', JSON.stringify(data.user))
+              console.log('Set Local Storage')
+              window.localStorage.setItem('user', Object.values(data.nama))
               window.localStorage.setItem('token', token)
             }
 
@@ -86,7 +90,7 @@ export default {
           this.$store.commit('TOGGLE_LOADING')
           console.log(error)
 
-          this.response = 'Server appears to be offline'
+          this.response = 'Email or Password Incorrect'
           this.toggleLoading()
         })
     },

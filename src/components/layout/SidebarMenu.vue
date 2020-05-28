@@ -7,51 +7,110 @@
         <span class="page">Dashboard</span>
       </a>
     </router-link>
-    <router-link tag="li" class="pageLink" to="/tables">
+    <router-link tag="li" class="pageLink" to="/excel">
       <a>
-        <i class="fa fa-table"></i>
-        <span class="page">Tables</span>
+        <i class="fa fa-desktop"></i>
+        <span class="page">Excel</span>
+      </a>
+    </router-link>
+    <router-link tag="li" class="pageLink" to="/DataDasarView">
+      <a>
+        <i class="fa fa-desktop"></i>
+        <span class="page">DataDasarView</span>
+      </a>
+    </router-link>
+    <router-link tag="li" class="pageLink" to="/konkin">
+      <a>
+        <i class="fa fa-desktop"></i>
+        <span class="page">konkin</span>
+      </a>
+    </router-link>
+    <router-link tag="li" class="pageLink" to="/publikasiView">
+      <a>
+        <i class="fa fa-desktop"></i>
+        <span class="page">publikasiView</span>
+      </a>
+    </router-link>
+    <router-link tag="li" class="pageLink" to="/abmasView">
+      <a>
+        <i class="fa fa-desktop"></i>
+        <span class="page">abmasView</span>
+      </a>
+    </router-link>
+    <router-link tag="li" class="pageLink" to="/dosenView">
+      <a>
+        <i class="fa fa-desktop"></i>
+        <span class="page">dosenView</span>
+      </a>
+    </router-link>
+    <router-link tag="li" class="pageLink" to="/penelitianView">
+      <a>
+        <i class="fa fa-desktop"></i>
+        <span class="page">penelitianView</span>
+      </a>
+    </router-link>
+    <router-link tag="li" class="pageLink" to="/JenisSatkerView">
+      <a>
+        <i class="fa fa-desktop"></i>
+        <span class="page">JenisSatkerView</span>
+      </a>
+    </router-link>
+	<router-link tag="li" class="pageLink" to="/AspekView">
+      <a>
+        <i class="fa fa-desktop"></i>
+        <span class="page">AspekView</span>
+      </a>
+    </router-link>
+    <router-link tag="li" class="pageLink" to="/MasterIndikatorView">
+      <a>
+        <i class="fa fa-desktop"></i>
+        <span class="page">MasterIndikatorView</span>
+      </a>
+    </router-link>
+    <router-link tag="li" class="pageLink" to="/PeriodeView">
+      <a>
+        <i class="fa fa-desktop"></i>
+        <span class="page">PeriodeView</span>
+      </a>
+    </router-link>
+    <router-link tag="li" class="pageLink" to="/MasterIndikatorFullView">
+      <a>
+        <i class="fa fa-desktop"></i>
+        <span class="page">MasterIndikatorFullView</span>
+      </a>
+    </router-link>
+    <router-link tag="li" class="pageLink" to="/Indikator_PeriodeView">
+      <a>
+        <i class="fa fa-desktop"></i>
+        <span class="page">Indikator_PeriodeView</span>
+      </a>
+    </router-link>
+    <router-link tag="li" class="pageLink" to="/SatuanKerjaView">
+      <a>
+        <i class="fa fa-desktop"></i>
+        <span class="page">SatuanKerjaView</span>
+      </a>
+    </router-link>
+    <router-link tag="li" class="pageLink" to="/Capaian_UnitView">
+      <a>
+        <i class="fa fa-desktop"></i>
+        <span class="page">Capaian_UnitView</span>
+      </a>
+    </router-link>
+    <router-link tag="li" class="pageLink" to="/Indikator_SatuanKerjaView">
+      <a>
+        <i class="fa fa-desktop"></i>
+        <span class="page">Indikator_SatuanKerjaView</span>
+      </a>
+    </router-link>
+    <router-link tag="li" class="pageLink" to="/Indikator_SatuanKerja_LogView">
+      <a>
+        <i class="fa fa-desktop"></i>
+        <span class="page">Indikator_SatuanKerja_LogView</span>
       </a>
     </router-link>
 
     <li class="header">ME</li>
-    <router-link tag="li" class="pageLink" to="/jexcel">
-      <a>
-        <i class="fa fa-file-excel-o"></i>
-        <span class="page">JExcel</span>
-      </a>
-    </router-link>
-    <li class="treeview">
-      <a href="#">
-        <i class="fa fa-folder-o"></i>
-        <span class="treeview-title">Tugas</span>
-        <span class="pull-right-container pull-right">
-          <i class="fa fa-angle-left fa-fw"></i>
-        </span>
-      </a>
-      <ul class="treeview-menu">
-        <li>
-          <a href="/datadasar">
-            <i class="fa fa-address-book-o"></i> Data Dasar
-          </a>
-        </li>
-        <li>
-          <a href="/capaianunit">
-            <i class="fa fa-address-book-o"></i> Capaian Unit
-          </a>
-        </li>
-        <li>
-          <a href="/unit">
-            <i class="fa fa-address-book-o"></i> Unit
-          </a>
-        </li>
-        <li>
-          <a href="/kategoriunit">
-            <i class="fa fa-address-book-o"></i> Kategori Unit
-          </a>
-        </li>
-      </ul>
-    </li>
     <router-link tag="li" class="pageLink" to="/tasks">
       <a>
         <i class="fa fa-tasks"></i>
@@ -137,19 +196,23 @@ export default {
 .sidebar-menu > li > a {
   padding: 12px 15px 12px 15px;
 }
+
 .sidebar-menu li.active > a > .fa-angle-left,
 .sidebar-menu li.active > a > .pull-right-container > .fa-angle-left {
   animation-name: rotate;
   animation-duration: 0.2s;
   animation-fill-mode: forwards;
 }
+
 .treeview-title {
   z-index: 1;
 }
+
 @keyframes rotate {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(-90deg);
   }

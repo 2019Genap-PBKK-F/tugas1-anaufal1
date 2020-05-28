@@ -1,10 +1,9 @@
 <template>
   <div>
     <div id="app" ref="spreadsheet"></div>
-    <!-- <div><input type="button" value="Add new row" @click="() => spreadsheet.insertRow()" /></div> -->
     <div>
-      <button class="btn btn-primary tambah" @click="() => spreadsheet.insertRow()">Add row</button>
-      <button class="btn btn-primary tambah" @click="() => spreadsheet.deleteRow()">Delete row</button>
+        <input type="button" value="Add New Row" @click="() => spreadsheet.insertRow()" />
+        <input type="button" value="Delete Selected Row" @click="() => spreadsheet.deleteRow()" />
     </div>
   </div>
 </template>
@@ -13,9 +12,12 @@
 import jexcel from 'jexcel'
 import 'jexcel/dist/jexcel.css'
 import axios from 'axios'
-var host = 'http://10.199.14.46:8025/'
-// var host = 'http://localhost:8025'
+
+// var host = 'http://10.199.14.46:8025/'
+var host = 'http://127.0.0.1:8025/'
+
 export default {
+  // name: 'App',
   data() {
     return {
       mahasiswa: [],
@@ -36,7 +38,7 @@ export default {
   },
   methods: {
     load() {
-      axios.get(host + '/api/mahasiswa/').then(res => {
+      axios.get(host + 'api/mahasiswa/').then(res => {
         console.log(res.data)
         var jexcelOptions = {
           data: res.data,
@@ -62,16 +64,16 @@ export default {
       })
     },
     newRow() {
-      axios.post(host + '/api/mahasiswa/', this.form).then(res => {
+      axios.post(host + 'api/mahasiswa/', this.form).then(res => {
         console.log(res.data)
       })
     },
     updateRow(instance, cell, columns, row, value) {
-      axios.get(host + '/api/mahasiswa/').then(res => {
+      axios.get(host + 'api/mahasiswa/').then(res => {
         var index = Object.values(res.data[row])
         index[columns] = value
         console.log(index)
-        axios.put(host + '/api/mahasiswa/' + index[0], {
+        axios.put(host + 'api/mahasiswa/' + index[0], {
           id: index[0],
           nrp: index[1],
           nama: index[2],
@@ -87,21 +89,13 @@ export default {
       })
     },
     deleteRow(instance, row) {
-      axios.get(host + '/api/mahasiswa').then(res => {
+      axios.get(host + 'api/mahasiswa').then(res => {
         var index = Object.values(res.data[row])
         // console.log(index)
         console.log(row)
-        axios.delete(host + '/api/mahasiswa/' + index[0])
+        axios.delete(host + 'api/mahasiswa/' + index[0])
       })
     }
   }
 }
 </script>
-
-<style>
-  .tambah {
-    margin-top: 10pt;
-    margin-bottom: 10pt;
-    margin-left: 10pt;
-    }
-</style>

@@ -2,8 +2,8 @@
   <div>
     <div id="app" ref="spreadsheet"></div>
     <div>
-        <input class="btn btn-primary tambah" type="button" value="Add New Row" @click="() => spreadsheet.insertRow()" />
-        <input class="btn btn-primary tambah" type="button" value="Delete Selected Row" @click="() => spreadsheet.deleteRow()" />
+        <input type="button" value="Add New Row" @click="() => spreadsheet.insertRow()" />
+        <input type="button" value="Delete Selected Row" @click="() => spreadsheet.deleteRow()" />
     </div>
   </div>
 </template>
@@ -12,12 +12,14 @@
 import jexcel from 'jexcel'
 import 'jexcel/dist/jexcel.css'
 import axios from 'axios'
-// var host = 'http://10.199.14.46:8025/api/capaian-unit/'
-var host = 'http://localhost:8025/api/capaian-unit/'
-// var dropdownDataDasar = 'http://10.199.14.46:8025/api/data-dasar/nama/'
-// var dropdownUnit = 'http://10.199.14.46:8025/api/nama-unit/'
-var dropdownDataDasar = 'http://localhost:8025/api/data-dasar/nama/'
-var dropdownUnit = 'http://localhost:8025/api/nama-unit/'
+
+// var host = 'http://10.199.14.46:8025/'
+var dropdownDataDasar = 'http://10.199.14.46:8025/api/data-dasar/nama/'
+var dropdownUnit = 'http://10.199.14.46:8025/api/nama-unit/'
+var host = 'http://10.199.14.46:8025/api/capaian-unit/'
+// var dropdownDataDasar = 'http://127.0.0.1:8025/api/data-dasar/nama/'
+// var dropdownUnit = 'http://127.0.0.1:8025/api/nama-unit/'
+// var host = 'http://127.0.0.1:8025/api/capaian-unit/'
 
 export default {
   // name: 'App',

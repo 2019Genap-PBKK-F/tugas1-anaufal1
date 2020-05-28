@@ -12,7 +12,6 @@ export default {
       console.error('API function call requires uri argument')
       return
     }
-
     var url = config.serverURI + uri
     return axios({ method, url, data })
   }

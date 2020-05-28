@@ -2,8 +2,8 @@
   <div>
     <div id="app" ref="spreadsheet"></div>
     <div>
-        <input class="btn btn-primary tambah" type="button" value="Add New Row" @click="() => spreadsheet.insertRow()" />
-        <input class="btn btn-primary tambah" type="button" value="Delete Selected Row" @click="() => spreadsheet.deleteRow()" />
+        <input type="button" value="Add New Row" @click="() => spreadsheet.insertRow()" />
+        <input type="button" value="Delete Selected Row" @click="() => spreadsheet.deleteRow()" />
     </div>
   </div>
 </template>
@@ -12,15 +12,17 @@
 import jexcel from 'jexcel'
 import 'jexcel/dist/jexcel.css'
 import axios from 'axios'
-// var host = 'http://10.199.14.46:8025/'
-var host = 'http://localhost:8025/'
+
+var host = 'http://10.199.14.46:8025/'
+// var host = 'http://127.0.0.1:8025/'
+
 export default {
   // name: 'App',
   data() {
     return {
       dataDasar: [],
       form: {
-        nama: 'New Data'
+        nama: 'Blank'
       }
     }
   },
@@ -29,7 +31,7 @@ export default {
   },
   methods: {
     load() {
-      axios.get(host + 'api/data-dasar/').then(res => {
+      axios.get(host + 'api/kategori/').then(res => {
         console.log(res.data)
         var jexcelOptions = {
           data: res.data,
@@ -40,7 +42,7 @@ export default {
           responsive: true,
           columns: [
             { type: 'hidden', title: 'id', width: '10px' },
-            { type: 'text', title: 'Nama', width: '200px' }
+            { type: 'text', title: 'Nama', width: '120px' }
           ]
         }
         let spreadsheet = jexcel(this.$el, jexcelOptions)
@@ -48,16 +50,16 @@ export default {
       })
     },
     newRow() {
-      axios.post(host + 'api/data-dasar/', this.form).then(res => {
+      axios.post(host + 'api/kategori/', this.form).then(res => {
         console.log(res.data)
       })
     },
     updateRow(instance, cell, columns, row, value) {
-      axios.get(host + 'api/data-dasar/').then(res => {
+      axios.get(host + 'api/kategori/').then(res => {
         var index = Object.values(res.data[row])
         index[columns] = value
         console.log(index)
-        axios.put(host + 'api/data-dasar/' + index[0], {
+        axios.put(host + 'api/kategori/' + index[0], {
           id: index[0],
           nama: index[1]
         }).then(res => {
@@ -66,20 +68,13 @@ export default {
       })
     },
     deleteRow(instance, row) {
-      axios.get(host + 'api/data-dasar/').then(res => {
+      axios.get(host + 'api/kategori/').then(res => {
         var index = Object.values(res.data[row])
         // console.log(index)
         console.log(row)
-        axios.delete(host + 'api/data-dasar/' + index[0])
+        axios.delete(host + 'api/kategori/' + index[0])
       })
     }
   }
 }
 </script>
-<style>
-  .tambah {
-    margin-top: 10pt;
-    margin-bottom: 10pt;
-    margin-left: 10pt;
-    }
-</style>
